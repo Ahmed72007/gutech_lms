@@ -1,0 +1,10 @@
+# Never upload secrets or local-only material.
+**/.env
+**/.env.*
+!**/.env.example
+_legacy/
+.claude/
+*.pdf
+backend/tests/
+**/node_modules/
+**/dist/

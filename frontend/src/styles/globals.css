@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * "Lagoon & Ember" palette
+ * Lagoon teal is the primary action colour, ember amber the accent,
+ * on a warm-ivory canvas (light) or deep ink (dark). The sidebar is always ink.
+ */
+@layer base {
+  :root {
+    --background: 40 33% 98%;
+    --foreground: 224 40% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 40% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 40% 12%;
+    --muted: 40 22% 94%;
+    --muted-foreground: 222 10% 40%;
+    --border: 36 18% 87%;
+    --input: 36 16% 84%;
+    --ring: 171 72% 30%;
+    --shadow: 224 40% 12%;
+
+    --primary: 171 72% 29%;
+    --primary-foreground: 0 0% 100%;
+    --primary-soft: 168 55% 93%;
+    --accent: 29 92% 52%;
+    --accent-foreground: 224 40% 12%;
+    --accent-soft: 33 100% 94%;
+
+    --success: 152 62% 32%;
+    --success-soft: 148 52% 93%;
+    --warning: 35 92% 40%;
+    --warning-soft: 44 100% 92%;
+    --danger: 356 72% 48%;
+    --danger-foreground: 0 0% 100%;
+    --danger-soft: 356 85% 96%;
+    --info: 214 82% 48%;
+    --info-soft: 214 90% 95%;
+
+    --ink: 224 42% 9%;
+    --ink-2: 224 34% 14%;
+    --ink-foreground: 210 30% 92%;
+
+    --radius: 0.85rem;
+  }
+
+  .dark {
+    --background: 225 36% 7%;
+    --foreground: 210 30% 94%;
+    --card: 225 30% 10%;
+    --card-foreground: 210 30% 94%;
+    --popover: 225 30% 11%;
+    --popover-foreground: 210 30% 94%;
+    --muted: 225 24% 14%;
+    --muted-foreground: 220 14% 66%;
+    --border: 225 20% 18%;
+    --input: 225 18% 22%;
+    --ring: 168 70% 46%;
+    --shadow: 225 60% 2%;
+
+    --primary: 168 70% 44%;
+    --primary-foreground: 225 40% 8%;
+    --primary-soft: 170 45% 14%;
+    --accent: 32 95% 60%;
+    --accent-foreground: 225 40% 8%;
+    --accent-soft: 30 50% 14%;
+
+    --success: 150 55% 50%;
+    --success-soft: 150 40% 13%;
+    --warning: 40 95% 58%;
+    --warning-soft: 38 45% 13%;
+    --danger: 356 80% 64%;
+    --danger-foreground: 225 40% 8%;
+    --danger-soft: 356 40% 14%;
+    --info: 212 90% 66%;
+    --info-soft: 214 45% 15%;
+
+    --ink: 226 44% 5%;
+    --ink-2: 225 34% 10%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    font-feature-settings: 'ss01', 'cv11';
+    min-height: 100dvh;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tight;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.22);
+  }
+}
+
+@layer components {
+  /* Soft aurora backdrop used on auth screens and page heroes. */
+  .aurora {
+    background:
+      radial-gradient(60% 80% at 15% 10%, hsl(var(--primary) / 0.55), transparent 60%),
+      radial-gradient(50% 60% at 85% 20%, hsl(var(--accent) / 0.35), transparent 60%),
+      radial-gradient(70% 70% at 60% 100%, hsl(196 80% 40% / 0.35), transparent 60%),
+      hsl(var(--ink));
+  }
+
+  .hero-surface {
+    background:
+      radial-gradient(120% 140% at 0% 0%, hsl(var(--primary) / 0.16), transparent 55%),
+      radial-gradient(90% 120% at 100% 0%, hsl(var(--accent) / 0.14), transparent 50%),
+      hsl(var(--card));
+  }
+
+  .grid-pattern {
+    background-image:
+      linear-gradient(hsl(var(--ink-foreground) / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--ink-foreground) / 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
